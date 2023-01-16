@@ -1,4 +1,4 @@
-# electron-webpack-typescript-sont-nuisibles
+# react-webpack-typescript-sont-nuisibles
 
 ...et vous devriez continuer de les utiliser!
 
