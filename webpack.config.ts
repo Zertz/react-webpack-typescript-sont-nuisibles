@@ -10,16 +10,23 @@ const devServer: DevServerConfiguration = {
   static: "./dist",
 };
 
-function getBaseConfiguration(cmtsxLoader: RuleSetUseItem[]): Configuration {
+function getBaseConfiguration(
+  mode: "development" | "production",
+  cmtsxLoader: RuleSetUseItem[]
+): Configuration {
   return {
     // @ts-expect-error 🙈
     name: cmtsxLoader[0].loader.split("-")[0],
     devtool: "eval-source-map",
-    devServer,
+    devServer: mode === "development" ? devServer : undefined,
     entry: "./src/main.tsx",
-    experiments: {
-      lazyCompilation: true,
-    },
+    experiments:
+      mode === "development"
+        ? {
+            lazyCompilation: true,
+          }
+        : undefined,
+    mode,
     module: {
       rules: [
         {
@@ -65,34 +72,40 @@ function getBaseConfiguration(cmtsxLoader: RuleSetUseItem[]): Configuration {
       path: resolve(__dirname, "dist"),
       clean: true,
     },
+    // @ts-expect-error Trust me.
     plugins: [
       new HtmlWebpackPlugin({
         template: "index.html",
       }),
-      new ReactRefreshWebpackPlugin(),
-    ],
+      mode === "development" && new ReactRefreshWebpackPlugin(),
+    ].filter(Boolean),
   };
 }
 
-const configurations = [
-  getBaseConfiguration([
-    {
-      loader: "babel-loader",
-    },
-  ]),
-  getBaseConfiguration([
-    {
-      loader: "ts-loader",
-      options: {
-        transpileOnly: true,
+const configurations = function (
+  _: unknown,
+  { mode }: { mode: "development" | "production" }
+) {
+  return [
+    getBaseConfiguration(mode, [
+      {
+        loader: "babel-loader",
       },
-    },
-  ]),
-  getBaseConfiguration([
-    {
-      loader: "swc-loader",
-    },
-  ]),
-];
+    ]),
+    getBaseConfiguration(mode, [
+      {
+        loader: "ts-loader",
+        options: {
+          transpileOnly: true,
+        },
+      },
+    ]),
+    getBaseConfiguration(mode, [
+      {
+        loader: "swc-loader",
+      },
+    ]),
+  ];
+};
 
 export default configurations;
