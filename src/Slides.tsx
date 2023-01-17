@@ -106,6 +106,13 @@ export default function Slides() {
             <li>esbuild-runner</li>
           </ul>
         </Slide>
+        <Slide title="🏢" subtitle="Serveur">
+          <ul>
+            <li>~25 secondes</li>
+            <li>&darr;</li>
+            <li>~5s</li>
+          </ul>
+        </Slide>
         <Slide title="2️⃣" subtitle="webpack 5.x">
           <code>npm install (webpack and friends)@latest</code>
           <Reference href="https://webpack.js.org/migrate/5/" />
@@ -142,26 +149,37 @@ export default function Slides() {
           &darr;
           <code>{patate}</code>
         </Slide>
-        <Slide title="Compiler" subtitle="v5.x">
+        <Slide title="4️⃣" subtitle="Compiler / Transpiler">
           <ul>
-            <li>use: babel-loader / ts-loader &rarr; use: swc-loader</li>
+            <li>use: ["babel-loader", "ts-loader"] &rarr; use: "swc-loader"</li>
             <li>.babelrc &rarr; .swcrc</li>
           </ul>
           <code>npm uninstall @babel/* babel-loader ts-loader</code>
           <code>npm install @swc/core swc-loader</code>
         </Slide>
-        <Slide title="(Com|Trans)piler">
+        <Slide title="🏢" subtitle="Client">
           <ul>
-            <li>use: babel-loader / ts-loader &rarr; use: swc-loader</li>
-            <li>.babelrc &rarr; .swcrc</li>
+            <li>file/url-loader &rarr; Asset modules: ~10%</li>
+            <li>babel &rarr; SWC: ~40%</li>
           </ul>
-          <code>npm uninstall @babel/* babel-loader ts-loader</code>
-          <code>npm install @swc/core swc-loader</code>
         </Slide>
-        <Slide
-          title="Hot Module Replacement"
-          subtitle="devServer.hot: true"
-        ></Slide>
+        <Slide title="🔥" subtitle="Hot Module Replacement">
+          <ul>
+            <li>webpack-dev-server &rarr; devServer.hot: true</li>
+            <li>webpack-dev-middleware + webpack-hot-middleware</li>
+          </ul>
+        </Slide>
+        <Slide title="🌈" subtitle="React Refresh">
+          <ul>
+            <li>npm install --save-dev @pmmmwh/react-refresh-webpack-plugin</li>
+            <li>plugins: [new ReactRefreshWebpackPlugin()]</li>
+          </ul>
+        </Slide>
+        <Slide title="👀" subtitle="Vue">
+          <ul>
+            <li>use: "vue-loader"</li>
+          </ul>
+        </Slide>
         <Slide
           title="Lazy compilation"
           subtitle="experiments.lazyCompilation: true"
@@ -169,6 +187,26 @@ export default function Slides() {
           <ul>
             <li>HMR</li>
             <li>HTTP2 (server-sent events)</li>
+            <li>Dynamic imports</li>
+          </ul>
+          <Reference href="https://github.com/webpack/webpack/pull/12469" />
+        </Slide>
+        <Slide title="🕺" subtitle="Dépendances">
+          <pre>
+            <code>{`const package = await import("package");`}</code>
+          </pre>
+        </Slide>
+        <Slide title="🥱" subtitle="Components">
+          <pre>
+            <code>
+              {`const Component = React.lazy(() => import("./Component"));`}
+              {`\n\n<Suspense fallback={null}><Component /><Suspense>;`}
+            </code>
+          </pre>
+        </Slide>
+        <Slide title="🍪" subtitle="splitChunks">
+          <ul>
+            <li>Static-ish deps &rarr; React</li>
           </ul>
         </Slide>
         <Slide title="💰" subtitle="Pourquoi investir?">
