@@ -4,7 +4,7 @@
   "description": "React, Webpack et TypeScript sont nuisibles... ...et vous devriez continuer de les utiliser!",
   "type": "module",
   "scripts": {
-    "start": "webpack serve --config webpack.config.ts --mode development --open",
+    "start": "webpack serve --config webpack.config.ts --config-name swc --mode development --open",
     "build": "webpack --config webpack.config.ts --mode production"
   },
   "author": "Pier-Luc Gendreau",
