@@ -26,7 +26,10 @@ function getBaseConfiguration(
     experiments:
       mode === "development"
         ? {
-            lazyCompilation: true,
+            lazyCompilation: {
+              entries: false,
+              imports: true,
+            },
           }
         : undefined,
     mode,
@@ -43,10 +46,12 @@ function getBaseConfiguration(
         },
         {
           test: /\.png$/i,
+          // use: "file-loader",
           type: "asset",
         },
         {
           test: /\.txt$/i,
+          // use: "raw-loader",
           type: "asset/source",
         },
       ],
@@ -82,7 +87,7 @@ function getBaseConfiguration(
     output: {
       filename: "[name].[contenthash].js",
       path: resolve(__dirname, "dist"),
-      clean: true,
+      publicPath: "/",
     },
     // @ts-expect-error Trust me.
     plugins: [

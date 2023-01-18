@@ -51,6 +51,13 @@ export default function Slides() {
             <li>Rigide</li>
           </ul>
         </Slide>
+        <Slide title="🤖" subtitle="Lignes de code">
+          <ul>
+            <li>JavaScript: ~100 000</li>
+            <li>TypeScript: ~100 000</li>
+            <li>React: ~100 000</li>
+          </ul>
+        </Slide>
         <Slide
           title="💡"
           subtitle="Solutions (presque) parfaites"
@@ -84,8 +91,7 @@ export default function Slides() {
         >
           <ul>
             <li>Bundler</li>
-            <li>Transpiler</li>
-            <li>Compiler</li>
+            <li>Transformer</li>
             <li>ESM (ECMAScript Modules) vs. CJS (CommonJS)</li>
           </ul>
         </Slide>
@@ -118,17 +124,19 @@ export default function Slides() {
             <li>use: raw-loader &rarr; type: asset/source</li>
             <li>use: url-loader &rarr; type: asset/inline</li>
           </ul>
-          <code>npm uninstall file-loader raw-loader url-loader</code>
           <Reference href="https://webpack.js.org/guides/asset-modules/" />
         </Slide>
-        <Slide title={'type: "asset"'} subtitle=">=8 KB &rarr; asset/resource">
+        <Slide title="⚙️" subtitle="Asset modules">
+          <code>npm uninstall file-loader raw-loader url-loader</code>
+        </Slide>
+        <Slide title="⚙️" subtitle={'type: "asset/resource"'}>
           <code>import trends from "./trends.png";</code>
           &darr;
           <code>{"<img src={trends} />"}</code>
           &darr;
           <code>{`<img src="${trends}" />`}</code>
         </Slide>
-        <Slide title={'type: "asset"'} subtitle="<8 KB &rarr; asset/inline">
+        <Slide title="⚙️" subtitle={'type: "asset/resource"'}>
           <code>import focus_par_telus from "./focus_par_telus.png";</code>
           &darr;
           <code>{"<img src={focus_par_telus} />"}</code>
@@ -139,6 +147,12 @@ export default function Slides() {
             {'" />'}
           </code>
         </Slide>
+        <Slide title="🪄" subtitle={'type: "asset"'}>
+          <ul>
+            <li>{"< 8 KB"} &rarr; asset/inline</li>
+            <li>{">= 8 KB"} &rarr; asset/resource</li>
+          </ul>
+        </Slide>
         <Slide title="📄" subtitle={'type="asset/source"'}>
           <code>import patate from "./patate.txt";</code>
           &darr;
@@ -146,11 +160,19 @@ export default function Slides() {
         </Slide>
         <Slide title="4️⃣" subtitle="Compiler / Transpiler">
           <ul>
+            <li>babel &rarr; swc</li>
+            <li>JavaScript &rarr; Rust</li>
+          </ul>
+        </Slide>
+        <Slide title="⚙️" subtitle="Compiler / Transpiler">
+          <code>npm uninstall @babel/* babel-loader ts-loader</code>
+          <code>npm install @swc/core swc-loader</code>
+        </Slide>
+        <Slide title="⚙️" subtitle="Compiler / Transpiler">
+          <ul>
             <li>use: ["babel-loader", "ts-loader"] &rarr; use: "swc-loader"</li>
             <li>.babelrc &rarr; .swcrc</li>
           </ul>
-          <code>npm uninstall @babel/* babel-loader ts-loader</code>
-          <code>npm install @swc/core swc-loader</code>
         </Slide>
         <Slide title="🏢" subtitle="Client">
           <ul>
@@ -170,17 +192,19 @@ export default function Slides() {
             <li>plugins: [new ReactRefreshWebpackPlugin()]</li>
           </ul>
         </Slide>
-        <Slide
-          title="Lazy compilation"
-          subtitle="experiments.lazyCompilation: true"
-        >
+        <Slide title="😴" subtitle="Lazy compilation">
           <ul>
             <li>HMR</li>
             <li>HTTP2 (SSE: server-sent events)</li>
           </ul>
+          <Reference href="https://webpack.js.org/configuration/experiments/#experimentslazycompilation" />
           <Reference href="https://github.com/webpack/webpack/pull/12469" />
         </Slide>
-        <Slide title="🕺" subtitle="Dynamic imports">
+        <Slide title="⚙️" subtitle="Lazy compilation">
+          <code>experiments.lazyCompilation: true</code>
+          <code>output.publicPath: "/"</code>
+        </Slide>
+        <Slide title="⚙️" subtitle="Dynamic imports">
           <pre>
             <code>{`import package from "package";`}</code>
           </pre>
@@ -189,7 +213,7 @@ export default function Slides() {
             <code>{`const package = await import("package");`}</code>
           </pre>
         </Slide>
-        <Slide title="🥱" subtitle="Lazy components">
+        <Slide title="⚙️" subtitle="Lazy components">
           <pre>
             <code>
               {`import Component from "./Component";`}
