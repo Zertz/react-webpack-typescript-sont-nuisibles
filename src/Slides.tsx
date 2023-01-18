@@ -193,25 +193,33 @@ export default function Slides() {
         </Slide>
         <Slide title="🕺" subtitle="Dépendances">
           <pre>
+            <code>{`import package from "package";`}</code>
+          </pre>
+          &darr;
+          <pre>
             <code>{`const package = await import("package");`}</code>
           </pre>
         </Slide>
         <Slide title="🥱" subtitle="Components">
           <pre>
             <code>
+              {`import Component from "./Component";`}
+              {`\n<Component />`}
+            </code>
+          </pre>
+          &darr;
+          <pre>
+            <code>
               {`const Component = React.lazy(() => import("./Component"));`}
-              {`\n\n<Suspense fallback={null}><Component /><Suspense>;`}
+              {`\n<Suspense fallback={null}><Component /><Suspense>`}
             </code>
           </pre>
         </Slide>
-        <Slide title="🍪" subtitle="splitChunks">
+        <Slide title="🎨" subtitle="CSS">
           <ul>
-            <li>Static-ish deps &rarr; React</li>
-          </ul>
-        </Slide>
-        <Slide title="💰" subtitle="Pourquoi investir?">
-          <ul className="list-inside list-disc">
-            <li>Performance ~= $</li>
+            <li>postcss-loader</li>
+            <li>&darr;</li>
+            <li>lightningcss-loader</li>
           </ul>
         </Slide>
         <Slide title="🤔" subtitle="Questions?">
