@@ -55,7 +55,7 @@ export default function Slides() {
           <ul>
             <li>JavaScript: ~100 000</li>
             <li>TypeScript: ~100 000</li>
-            <li>React: ~100 000</li>
+            <li>React: ~60 000</li>
           </ul>
         </Slide>
         <Slide
@@ -74,9 +74,9 @@ export default function Slides() {
         </Slide>
         <Slide title="🤔" subtitle="Pourquoi ce trio?">
           <ul>
-            <li>Écosystème</li>
-            <li>Intégration</li>
-            <li>Parce que</li>
+            <li>TypeScript &rarr; Parce que</li>
+            <li>React &rarr; Écosystème</li>
+            <li>webpack &rarr; Intégration</li>
           </ul>
         </Slide>
         <Slide
@@ -98,6 +98,13 @@ export default function Slides() {
         <Slide title="🚂" subtitle="P'tit train va loin">
           <ul>
             <li>Approche itérative</li>
+          </ul>
+        </Slide>
+        <Slide title="🐢" subtitle="Oops...">
+          <ul>
+            <li>Plus plus de React / TypeScript</li>
+            <li>&darr;</li>
+            <li>Plus en plus lent</li>
           </ul>
         </Slide>
         <Slide title="1️⃣" subtitle="Remplacer">
@@ -136,7 +143,7 @@ export default function Slides() {
           &darr;
           <code>{`<img src="${trends}" />`}</code>
         </Slide>
-        <Slide title="⚙️" subtitle={'type: "asset/resource"'}>
+        <Slide title="⚙️" subtitle={'type: "asset/inline"'}>
           <code>import focus_par_telus from "./focus_par_telus.png";</code>
           &darr;
           <code>{"<img src={focus_par_telus} />"}</code>
