@@ -28,5 +28,5 @@ export default function StaticImport() {
     console.info(Bootstrap);
   }, []);
 
-  return <div>Dependencies</div>;
+  return <div>StaticImport</div>;
 }
