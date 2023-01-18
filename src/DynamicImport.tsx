@@ -1,21 +1,31 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function DynamicImport() {
+  const [isLoading, setLoading] = useState(true);
+
   useEffect(() => {
-    import("@mui/base").then(console.info).catch(console.error);
-    import("antd").then(console.info).catch(console.error);
-    import("d3").then(console.info).catch(console.error);
-    import("jquery").then(console.info).catch(console.error);
-    import("lodash").then(console.info).catch(console.error);
-    import("moment").then(console.info).catch(console.error);
-    import("moment-timezone").then(console.info).catch(console.error);
-    import("react").then(console.info).catch(console.error);
-    import("react-bootstrap").then(console.info).catch(console.error);
-    import("three").then(console.info).catch(console.error);
-    import("three").then(console.info).catch(console.error);
-    import("three").then(console.info).catch(console.error);
-    import("underscore").then(console.info).catch(console.error);
+    Promise.all([
+      import("@mui/base"),
+      import("antd"),
+      import("d3"),
+      import("jquery"),
+      import("lodash"),
+      import("moment"),
+      import("moment-timezone"),
+      import("react"),
+      import("react-bootstrap"),
+      import("three"),
+      import("three"),
+      import("three"),
+      import("underscore"),
+    ])
+      .then(() => setLoading(false))
+      .catch(() => setLoading(false));
   }, []);
 
-  return <div>Dependencies</div>;
+  return (
+    <ul>
+      <li>{isLoading ? "Chargement..." : "Chargé!"}</li>
+    </ul>
+  );
 }
