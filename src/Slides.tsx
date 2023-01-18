@@ -20,7 +20,7 @@ export default function Slides() {
             "GPS et capteurs",
             "toutes sortes de véhicules",
             "données, intelligence",
-            "+/- 50 services en production",
+            "+/- 60 services en production",
             "app web",
           ]}
         >
@@ -51,17 +51,30 @@ export default function Slides() {
             <li>Rigide</li>
           </ul>
         </Slide>
-        <Slide title="⏲️" subtitle="https://xkcd.com/1205/">
-          <img
-            alt="xkcd"
-            className="mx-auto"
-            src="https://imgs.xkcd.com/comics/is_it_worth_the_time_2x.png"
-            width="555"
-          />
+        <Slide
+          title="💡"
+          subtitle="Solutions (presque) parfaites"
+          hints={["Nouvelles apps", "Entrer dans leur moule"]}
+        >
+          <ul>
+            <li>Next</li>
+            <li>Vite</li>
+            <li>Remix</li>
+            <li>Turbopack</li>
+            <li>&darr;</li>
+            <li>À la fine pointe, mais...</li>
+          </ul>
+        </Slide>
+        <Slide title="🤔" subtitle="Pourquoi ce trio?">
+          <ul>
+            <li>Écosystème</li>
+            <li>Intégration</li>
+            <li>Parce que</li>
+          </ul>
         </Slide>
         <Slide
-          title="🤔"
-          subtitle="Pourquoi?"
+          title="🥴"
+          subtitle="webpack?!"
           hints={[
             "Support parfois inégal",
             "Pas de CommonJS",
@@ -76,24 +89,6 @@ export default function Slides() {
             <li>ESM (ECMAScript Modules) vs. CJS (CommonJS)</li>
           </ul>
         </Slide>
-        <Slide title="👨‍🌾👩‍🌾" subtitle="Solution parfaite">
-          <ul>
-            <li>Abandonner et devenir fermier</li>
-          </ul>
-        </Slide>
-        <Slide
-          title="💡"
-          subtitle="Solutions (presque) parfaites"
-          hints={["Nouvelles apps", "Entrer dans leur moule"]}
-        >
-          <ul>
-            <li>Next</li>
-            <li>Vite</li>
-            <li>Remix</li>
-            <li>&darr;</li>
-            <li>Performants, mais...</li>
-          </ul>
-        </Slide>
         <Slide title="🚂" subtitle="P'tit train va loin">
           <ul>
             <li>Approche itérative</li>
@@ -105,12 +100,12 @@ export default function Slides() {
             <li>&darr;</li>
             <li>esbuild-runner</li>
           </ul>
+          <Reference href="https://github.com/folke/esbuild-runner" />
+          <Reference href="https://typestrong.org/ts-node/docs/swc/" />
         </Slide>
         <Slide title="🏢" subtitle="Serveur">
           <ul>
-            <li>~25 secondes</li>
-            <li>&darr;</li>
-            <li>~5s</li>
+            <li>~25 secondes &rarr; ~5 secondes</li>
           </ul>
         </Slide>
         <Slide title="2️⃣" subtitle="webpack 5.x">
@@ -175,23 +170,17 @@ export default function Slides() {
             <li>plugins: [new ReactRefreshWebpackPlugin()]</li>
           </ul>
         </Slide>
-        <Slide title="👀" subtitle="Vue">
-          <ul>
-            <li>use: "vue-loader"</li>
-          </ul>
-        </Slide>
         <Slide
           title="Lazy compilation"
           subtitle="experiments.lazyCompilation: true"
         >
           <ul>
             <li>HMR</li>
-            <li>HTTP2 (server-sent events)</li>
-            <li>Dynamic imports</li>
+            <li>HTTP2 (SSE: server-sent events)</li>
           </ul>
           <Reference href="https://github.com/webpack/webpack/pull/12469" />
         </Slide>
-        <Slide title="🕺" subtitle="Dépendances">
+        <Slide title="🕺" subtitle="Dynamic imports">
           <pre>
             <code>{`import package from "package";`}</code>
           </pre>
@@ -200,7 +189,7 @@ export default function Slides() {
             <code>{`const package = await import("package");`}</code>
           </pre>
         </Slide>
-        <Slide title="🥱" subtitle="Components">
+        <Slide title="🥱" subtitle="Lazy components">
           <pre>
             <code>
               {`import Component from "./Component";`}
@@ -214,6 +203,12 @@ export default function Slides() {
               {`\n<Suspense fallback={null}><Component /><Suspense>`}
             </code>
           </pre>
+        </Slide>
+        <Slide title="÷" subtitle="Comment segmenter?">
+          <ul>
+            <li>Page &rarr; react-router</li>
+            <li>Dépendances à usage unique</li>
+          </ul>
         </Slide>
         <Slide title="🎨" subtitle="CSS">
           <ul>

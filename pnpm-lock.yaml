@@ -42,6 +42,7 @@ specifiers:
   style-loader: ^3.3.1
   swc-loader: ^0.2.3
   tailwindcss: ^3.2.4
+  terser-webpack-plugin: ^5.3.6
   three: ^0.148.0
   ts-loader: ^9.4.2
   typescript: ^4.9.4
@@ -96,6 +97,7 @@ devDependencies:
   style-loader: 3.3.1_webpack@5.75.0
   swc-loader: 0.2.3_66vbogangvry5myman7b26hqka
   tailwindcss: 3.2.4_postcss@8.4.21
+  terser-webpack-plugin: 5.3.6_66vbogangvry5myman7b26hqka
   ts-loader: 9.4.2_3fkjkrd3audxnith3e7fo4fnxi
   typescript: 4.9.4
   webpack: 5.75.0_34fan37q3tac2wcrmqjeeftnne

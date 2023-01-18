@@ -5,8 +5,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { App } from "./App";
 import DynamicImport from "./DynamicImport";
 import "./main.css";
+import Slides from "./Slides";
 
-const Slides = React.lazy(() => import("./Slides"));
 const StaticImport = React.lazy(() => import("./StaticImport"));
 
 const router = createBrowserRouter([
@@ -16,7 +16,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <div>🚧 En construction 🚧</div>,
+        element: <div>TechnoDrinks, 18 janvier 2023</div>,
       },
       {
         path: "static",
@@ -32,11 +32,7 @@ const router = createBrowserRouter([
       },
       {
         path: "slides",
-        element: (
-          <Suspense fallback={null}>
-            <Slides />
-          </Suspense>
-        ),
+        element: <Slides />,
       },
     ],
   },

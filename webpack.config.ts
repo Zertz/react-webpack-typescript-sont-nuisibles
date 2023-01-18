@@ -1,6 +1,7 @@
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import { resolve } from "node:path";
+import TerserPlugin from "terser-webpack-plugin";
 import type { Configuration, RuleSetUseItem } from "webpack";
 import type { Configuration as DevServerConfiguration } from "webpack-dev-server";
 
@@ -14,9 +15,11 @@ function getBaseConfiguration(
   mode: "development" | "production",
   cmtsxLoader: RuleSetUseItem[]
 ): Configuration {
+  // @ts-expect-error 🙈
+  const name = cmtsxLoader[0].loader.split("-")[0];
+
   return {
-    // @ts-expect-error 🙈
-    name: cmtsxLoader[0].loader.split("-")[0],
+    name,
     devtool: "eval-source-map",
     devServer: mode === "development" ? devServer : undefined,
     entry: "./src/main.tsx",
@@ -67,6 +70,14 @@ function getBaseConfiguration(
           },
         },
       },
+      ...(mode === "production" && {
+        minimize: true,
+        minimizer: [
+          new TerserPlugin({
+            minify: name === "swc" ? TerserPlugin.swcMinify : undefined,
+          }),
+        ],
+      }),
     },
     output: {
       filename: "[name].[contenthash].js",
