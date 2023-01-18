@@ -12,7 +12,7 @@ import * as FOUR from "three";
 import * as THREE from "three";
 import * as underscore from "underscore";
 
-export default function Dependencies() {
+export default function StaticImport() {
   useEffect(() => {
     console.info(d3);
     console.info(underscore);

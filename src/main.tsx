@@ -3,10 +3,11 @@ import { StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { App } from "./App";
+import DynamicImport from "./DynamicImport";
 import "./main.css";
 
-const Dependencies = React.lazy(() => import("./Dependencies"));
 const Slides = React.lazy(() => import("./Slides"));
+const StaticImport = React.lazy(() => import("./StaticImport"));
 
 const router = createBrowserRouter([
   {
@@ -18,12 +19,16 @@ const router = createBrowserRouter([
         element: <div>🚧 En construction 🚧</div>,
       },
       {
-        path: "deps",
+        path: "static",
         element: (
           <Suspense fallback={null}>
-            <Dependencies />
+            <StaticImport />
           </Suspense>
         ),
+      },
+      {
+        path: "dynamic",
+        element: <DynamicImport />,
       },
       {
         path: "slides",

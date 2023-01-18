@@ -57,6 +57,7 @@ function getBaseConfiguration(
       },
     },
     optimization: {
+      chunkIds: "deterministic",
       runtimeChunk: "single",
       splitChunks: {
         cacheGroups: {
@@ -68,7 +69,7 @@ function getBaseConfiguration(
       },
     },
     output: {
-      filename: "[name].bundle.js",
+      filename: "[name].[contenthash].js",
       path: resolve(__dirname, "dist"),
       clean: true,
     },
